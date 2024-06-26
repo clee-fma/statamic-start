@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>{{ title }}</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    {{ vite src="resources/js/site.js|resources/css/site.scss" }}
 </head>
-<body class="bg-gray-900 text-white text-lg font-mono">
-    <div class="container max-w-lg mx-auto py-8">
+<body>
+    <div class="">
         {{ template_content }}
     </div>
 </body>
