@@ -1,0 +1,137 @@
+@use 'sass:meta';
+@use './tools';
+
+@use './global/fonts';
+@use './global/props';
+@use './composition/grid';
+@use './composition/layouts';
+@use './blocks/typography';
+@use './utilities/index';
+
+
+// Make post title appear "outside" the main editor container
+// (Will hopefully help with
+.editor-styles-wrapper {
+    --accent-color: var(--wp-components-color-accent, var(--wp-admin-theme-color, #3858e9));
+	background-color: #ddd;
+}
+
+// Disable typography panel
+.components-panel .typography-block-support-panel {
+    display: none;
+}
+
+.is-root-container {
+	background-color: white;
+	box-shadow: 0 -4px 10px rgba(0,0,0,.1)
+}
+
+:where(.edit-post-visual-editor) * {
+	font-family: inherit;
+}
+
+.block-editor-plain-text {
+    background-color: transparent;
+    padding: var(--space-050);
+}
+
+.edit-post-visual-editor {
+	font-family: var(--font-family-sans-serif);
+	gap: var(--space-050);
+	// Scope styles to editor
+	@include meta.load-css('./global/elements');
+
+	.is-root-container {
+		padding-inline: var(--space-050);
+	}
+
+	.is-hovered, .is-selected {
+		outline: 2px solid color-mix(in srgb, var(--accent-color), transparent);
+	}
+
+	.editor-editor-canvas__post-title-wrapper {
+		margin-bottom: var(--space-100);
+		padding: var(--space-050);
+		background-color: #ddd;
+
+		h1 {
+			font-size: var(--type-heading-md-fs);
+			padding-inline: var(--space-100);
+		}
+	}
+}
+
+.wp-block-fabtech-hero {
+	padding-inline: var(--space-050);
+
+	img {
+		margin-inline: auto;
+	}
+
+	.block-editor-media-placeholder {
+		margin-block-start: var(--space-050);
+	}
+
+	.block-editor-media-placeholder + .hero-body {
+		margin-top: 0;
+	}
+
+	.hero-breadcrumb {
+		@extend .cluster;
+		color: var(--color-orange-400);
+		padding: var(--space-050);
+		margin-block-end: var(--space-100);
+
+		svg {
+			width: 1em;
+			fill: currentColor
+		}
+	}
+
+	.hero-body {
+		@extend .sidebar;
+		position: relative;
+		background-color: white;
+		margin-top: calc(var(--space-400) * -3);
+		padding: var(--space-200);
+		--sidebar-content-min-width: 50%;
+
+		hgroup {
+			max-inline-size: 40rem;
+		}
+
+		.intro {
+			max-inline-size: 90ch !important;
+			margin-inline: auto;
+		}
+	}
+}
+
+.wp-block-fabtech-section {
+    background-color: var(--color-gray-050);
+    padding: var(--space-050);
+
+    > * {
+        --sidebar-target-width: 10rem;
+    }
+
+    &[data-theme="aubergine"] {
+		background-color: var(--color-aubergine-700);
+
+        & > p {
+            color: var(--color-gray-050);
+        }
+	}
+	&[data-theme="white"] {
+		background-color: white;
+	}
+	&[data-theme="gray"] {
+		background-color: var(--color-gray-050);
+	}
+	&[data-theme="eco"] {
+		background-color: var(--color-teal-050);
+	}
+    &[data-theme="sapphire"] {
+		background-color: var(--color-blue-050);
+	}
+}

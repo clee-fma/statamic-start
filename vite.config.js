@@ -6,8 +6,8 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/site.css',
                 'resources/js/site.js',
+                'resources/css/site.scss'
 
                 // Control Panel assets.
                 // https://statamic.dev/extending/control-panel#adding-css-and-js-assets
